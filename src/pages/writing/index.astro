@@ -3,9 +3,27 @@ import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import SiteFooter from '../../components/SiteFooter.astro';
 
-const posts = (await getCollection('writing', ({ data }) => !data.draft)).sort(
-  (a, b) => b.data.date.getTime() - a.data.date.getTime()
-);
+// Rich, hand-built articles (their own pages, e.g. charts) live here.
+const featured = [
+  {
+    href: '/writing/crisis-surcharge',
+    title: 'The math behind the crisis-surcharge',
+    dek: 'Across five carriers in May 2026, a line item labelled "fuel" came to contain a great deal more than fuel: the pass-through math, the 22-year ratchet, and where it can be challenged.',
+    date: new Date('2026-05-20'),
+    readingMinutes: 12,
+  },
+];
+// Simple Markdown posts from the writing collection.
+const collectionPosts = (await getCollection('writing', ({ data }) => !data.draft)).map((p) => ({
+  href: `/writing/${p.id}`,
+  title: p.data.title,
+  dek: p.data.dek,
+  date: p.data.date,
+  readingMinutes: p.data.readingMinutes,
+}));
+
+// Featured (hand-built) posts lead; simple Markdown posts follow, newest first.
+const posts = [...featured, ...collectionPosts.sort((a, b) => b.date.getTime() - a.date.getTime())];
 const fmt = (d: Date) => d.toLocaleDateString('en-GB', { year: 'numeric', month: 'long' });
 ---
 <Base
@@ -24,12 +42,12 @@ const fmt = (d: Date) => d.toLocaleDateString('en-GB', { year: 'numeric', month:
       <ol class="index" role="list">
         {posts.map((p, i) => (
           <li class="entry">
-            <a class="entry__link" href={`/writing/${p.id}`}>
+            <a class="entry__link" href={p.href}>
               <span class="entry__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
               <span class="entry__body">
-                <span class="entry__date">{fmt(p.data.date)}{p.data.readingMinutes ? ` · ${p.data.readingMinutes} min` : ''}</span>
-                <span class="entry__title">{p.data.title}</span>
-                <span class="entry__dek">{p.data.dek}</span>
+                <span class="entry__date">{fmt(p.date)}{p.readingMinutes ? ` · ${p.readingMinutes} min` : ''}</span>
+                <span class="entry__title">{p.title}</span>
+                <span class="entry__dek">{p.dek}</span>
               </span>
             </a>
           </li>
@@ -48,7 +66,6 @@ const fmt = (d: Date) => d.toLocaleDateString('en-GB', { year: 'numeric', month:
   .entry { border-bottom: 1px solid rgba(237, 230, 217, 0.14); }
   .entry__link { display: grid; grid-template-columns: auto 1fr; gap: clamp(20px, 4vw, 56px); align-items: baseline; padding: clamp(26px, 4vh, 44px) 0; transition: padding-left .35s ease; }
   .entry__link:hover { padding-left: 10px; }
-  /* the ONE amber on this page: the index numbers (the amber law). */
   .entry__num { font-family: var(--serif); font-weight: 300; font-variation-settings: 'opsz' 144; font-size: clamp(1.4rem, 2.4vw, 2rem); line-height: 1; color: var(--amber); }
   .entry__body { display: block; }
   .entry__date { display: block; font-family: var(--mono); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }

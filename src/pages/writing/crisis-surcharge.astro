@@ -1,0 +1,581 @@
+---
+// "The math behind the crisis-surcharge" — a data/analysis article with 3 SVG
+// charts. Ported faithfully from prototypes/01-valley/writing-surcharge.html.
+// Its charts render complete without JS; the script only adds draw-in + progress.
+import Base from '../../layouts/Base.astro';
+---
+<Base
+  title="The math behind the crisis-surcharge · Anubhav Das"
+  description="Across five carriers in May 2026, a line item labelled 'fuel' came to contain a great deal more than fuel. The pass-through math, the 22-year ratchet, and where the argument can be challenged."
+>
+  <div class="progress" aria-hidden="true"><div class="progress__track"></div><div class="progress__fill" id="progress-fill"></div></div>
+
+  <main id="main" tabindex="-1">
+    <!-- TITLE CARD -->
+    <header class="scene" aria-labelledby="art-title">
+      <div class="wrap">
+        <div class="kicker reveal">
+          <span class="kicker__num" aria-hidden="true">05</span>
+          <span class="kicker__meta">Analysis &nbsp;/&nbsp; May 2026 &nbsp;/&nbsp; 3 figures &nbsp;/&nbsp; 12 min</span>
+        </div>
+        <h1 class="article-title reveal" id="art-title">The math behind the crisis-surcharge.</h1>
+        <p class="standfirst reveal">Across five carriers in May 2026, a line item labelled <em class="accent">&ldquo;fuel&rdquo;</em> came to contain a great deal more than fuel. Here is the pass-through math, the 22-year ratchet, and where the argument can be challenged.</p>
+      </div>
+    </header>
+
+    <!-- LEAD -->
+    <div class="col first">
+      <p class="lead reveal">The Strait of Hormuz closed at the end of February 2026, jet kerosene ran to roughly ninety percent above its five-year average, and every carrier reached for the same instrument: the fuel surcharge. This is a note about what actually sits inside that number once you do the hedge-adjusted arithmetic, and about a mechanism that, by design, resists ever coming back down.</p>
+      <p class="reveal">Start from one publicly disclosed hedge book. A Northwestern flagship's Q1 2026 deck reports an effective fuel cost moving from $792 to $1,260 a tonne while holding a 70% hedge, a +59% effective increase against +97% unhedged spot. Scale that, carrier by carrier, into a <em>fair</em> pass-through: the per-passenger figure that would just recover the fuel-price move. Then set it beside what each carrier actually published.</p>
+    </div>
+
+    <!-- KEY-FIGURE BAND -->
+    <section class="evidence" aria-label="Published surcharge divided by fair pass-through, by carrier">
+      <div class="figures reveal">
+        <div class="fig"><div class="fig__n">0.69&times;</div><div class="fig__k">Northwestern<br>FRA&ndash;JFK</div></div>
+        <div class="fig"><div class="fig__n">1.23&times;</div><div class="fig__k">Far Eastern<br>HKG&ndash;LHR</div></div>
+        <div class="fig"><div class="fig__n">3.10&times;</div><div class="fig__k">Tokyo hub<br>NRT&ndash;LHR</div></div>
+        <div class="fig is-verdict"><div class="fig__n">13&times;</div><div class="fig__k">Gulf flagship<br>DXB&ndash;JFK</div></div>
+      </div>
+    </section>
+
+    <div class="col">
+      <p class="reveal">Two carriers under-recover even on the fuel portion alone. One sits near fair. And two, Tokyo hub and the Gulf flagship, land far above anything a fuel move can explain. Below two times, structural cost recovery (currency, ETS, distribution, disruption) is a plausible account of the gap. Above it, the label stops describing its contents.</p>
+    </div>
+
+    <!-- CHART 1 -->
+    <section class="evidence">
+      <figure aria-labelledby="c1-cap" aria-describedby="c1-desc">
+        <figcaption class="chart-figcap" id="c1-cap">
+          <b>Fig. 1 &middot; Fair pass-through implied by hedge vs published surcharge.</b><br>
+          Long-haul economy, one-way per passenger, May 2026. Dashed line = SAF mandate FRA&ndash;JFK 2035, &euro;32.70.
+        </figcaption>
+        <p class="vh" id="c1-desc">Horizontal grouped bars for five carriers. Each carrier shows an outline bar (fair pass-through implied by its hedge) and a filled bar (published surcharge), in euros. Northwestern flagship fair 50.4, published 35, ratio 0.69 times. Atlantic flagship fair 91.5, published 75, ratio 0.82 times. Far Eastern flagship fair 123.3, published 152, ratio 1.23 times. Tokyo hub carrier fair 108.8, published 337, ratio 3.10 times. Gulf flagship fair 23.3, published 302, ratio 13 times.</p>
+
+        <div class="chart-scroll chart-scroll--wide">
+        <svg class="chart" viewBox="0 0 990 600" role="img" aria-label="Fair vs published surcharge by carrier">
+          <g class="chart-grid" stroke="rgba(237,230,217,.11)" stroke-width="1">
+            <line x1="185" y1="28" x2="185" y2="568"/>
+            <line x1="293.8" y1="28" x2="293.8" y2="568"/>
+            <line x1="402.6" y1="28" x2="402.6" y2="568"/>
+            <line x1="511.4" y1="28" x2="511.4" y2="568"/>
+            <line x1="620.2" y1="28" x2="620.2" y2="568"/>
+            <line x1="729" y1="28" x2="729" y2="568"/>
+            <line x1="837.8" y1="28" x2="837.8" y2="568"/>
+          </g>
+          <line x1="256.2" y1="24" x2="256.2" y2="574" data-series stroke="#9A9082" stroke-width="1.4" stroke-dasharray="5 5"/>
+          <text x="256.2" y="16" fill="#9A9082" font-size="10.5" letter-spacing="1" text-anchor="middle">SAF &euro;32.70</text>
+          <g fill="#6f665b" font-size="11" text-anchor="middle">
+            <text x="185" y="588">&euro;0</text><text x="293.8" y="588">&euro;50</text>
+            <text x="402.6" y="588">&euro;100</text><text x="511.4" y="588">&euro;150</text>
+            <text x="620.2" y="588">&euro;200</text><text x="729" y="588">&euro;250</text>
+            <text x="837.8" y="588">&euro;300</text>
+          </g>
+          <g>
+            <text x="185" y="48" fill="#EDE6D9" font-size="15" font-family="Fraunces,serif" font-weight="500">Northwestern flagship</text>
+            <text x="980" y="48" fill="#6E92B0" font-size="20" font-weight="600" text-anchor="end">0.69&times;</text>
+            <rect class="bar bar-fair" x="185" y="60" width="109.6" height="18" fill="none" stroke="#6E92B0" stroke-width="2" data-series/>
+            <rect class="bar bar-pub"  x="185" y="84" width="76.2"  height="18" fill="#6E92B0" data-series/>
+            <text x="303" y="74" fill="#9A9082" font-size="12">&euro;50.4</text>
+            <text x="269" y="98" fill="#EDE6D9" font-size="12">&euro;35</text>
+          </g>
+          <g>
+            <text x="185" y="156" fill="#EDE6D9" font-size="15" font-family="Fraunces,serif" font-weight="500">Atlantic flagship</text>
+            <text x="980" y="156" fill="#4F8CA0" font-size="20" font-weight="600" text-anchor="end">0.82&times;</text>
+            <rect class="bar bar-fair" x="185" y="168" width="199.1" height="18" fill="none" stroke="#4F8CA0" stroke-width="2" data-series/>
+            <rect class="bar bar-pub"  x="185" y="192" width="163.2" height="18" fill="#4F8CA0" data-series/>
+            <text x="392" y="182" fill="#9A9082" font-size="12">&euro;91.5</text>
+            <text x="356" y="206" fill="#EDE6D9" font-size="12">&euro;75</text>
+          </g>
+          <g>
+            <text x="185" y="264" fill="#EDE6D9" font-size="15" font-family="Fraunces,serif" font-weight="500">Far Eastern flagship</text>
+            <text x="980" y="264" fill="#5AA06E" font-size="20" font-weight="600" text-anchor="end">1.23&times;</text>
+            <rect class="bar bar-fair" x="185" y="276" width="268.3" height="18" fill="none" stroke="#5AA06E" stroke-width="2" data-series/>
+            <rect class="bar bar-pub"  x="185" y="300" width="330.8" height="18" fill="#5AA06E" data-series/>
+            <text x="461" y="290" fill="#9A9082" font-size="12">&euro;123.3</text>
+            <text x="524" y="314" fill="#EDE6D9" font-size="12">&euro;152</text>
+          </g>
+          <g>
+            <text x="185" y="372" fill="#EDE6D9" font-size="15" font-family="Fraunces,serif" font-weight="500">Tokyo hub carrier</text>
+            <text x="980" y="372" fill="#9A7EAE" font-size="20" font-weight="600" text-anchor="end">3.10&times;</text>
+            <rect class="bar bar-fair" x="185" y="384" width="236.7" height="18" fill="none" stroke="#9A7EAE" stroke-width="2" data-series/>
+            <rect class="bar bar-pub"  x="185" y="408" width="733.3" height="18" fill="#9A7EAE" data-series/>
+            <text x="429" y="398" fill="#9A9082" font-size="12">&euro;108.8</text>
+            <text x="926" y="422" fill="#EDE6D9" font-size="12">&euro;337</text>
+          </g>
+          <g>
+            <text x="185" y="480" fill="#EDE6D9" font-size="15" font-family="Fraunces,serif" font-weight="500">Gulf flagship</text>
+            <text x="980" y="480" fill="#C86A48" font-size="22" font-weight="600" text-anchor="end">13&times;</text>
+            <rect class="bar bar-fair" x="185" y="492" width="50.7"  height="18" fill="none" stroke="#C86A48" stroke-width="2" data-series/>
+            <rect class="bar bar-pub"  x="185" y="516" width="657.2" height="18" fill="#C86A48" data-series/>
+            <text x="243" y="506" fill="#9A9082" font-size="12">&euro;23.3</text>
+            <text x="850" y="530" fill="#EDE6D9" font-size="12">&euro;302</text>
+          </g>
+        </svg>
+        </div>
+        <p class="scroll-hint">Swipe the chart to read it full-width</p>
+        <div class="chart-legend">
+          <span style="color:var(--paper)"><span class="swatch" style="border:1.6px solid var(--muted)"></span>Fair pass-through (implied by hedge)</span>
+          <span style="color:var(--paper)"><span class="swatch" style="background:var(--muted)"></span>Published surcharge</span>
+        </div>
+        <p class="chart-note">The bars a reader expects to sit below the outline are, for Tokyo hub and Gulf, several multiples above it. Colour marks the carrier; the length carries the finding.</p>
+        <details class="data">
+          <summary>View data</summary>
+          <table>
+            <caption>Fair vs published surcharge, &euro; one-way economy, May 2026</caption>
+            <thead><tr><th>Carrier</th><th>Fair (&euro;)</th><th>Published (&euro;)</th><th>Ratio</th></tr></thead>
+            <tbody>
+              <tr><td><span class="tick" style="background:var(--c-nw)"></span>Northwestern flagship</td><td>50.4</td><td>35</td><td>0.69&times;</td></tr>
+              <tr><td><span class="tick" style="background:var(--c-atl)"></span>Atlantic flagship</td><td>91.5</td><td>75</td><td>0.82&times;</td></tr>
+              <tr><td><span class="tick" style="background:var(--c-fe)"></span>Far Eastern flagship</td><td>123.3</td><td>152</td><td>1.23&times;</td></tr>
+              <tr><td><span class="tick" style="background:var(--c-tok)"></span>Tokyo hub carrier</td><td>108.8</td><td>337</td><td>3.10&times;</td></tr>
+              <tr><td><span class="tick" style="background:var(--c-gulf)"></span>Gulf flagship</td><td>23.3</td><td>302</td><td>13&times;</td></tr>
+            </tbody>
+          </table>
+        </details>
+        <p class="chart-src">Sources: Northwestern Q1 2026 deck (30 Apr 2026); Atlantic/IAG Q1 results (8 May 2026); Far Eastern own statement (26 Mar 2026); Tokyo hub ANA fare rules (Wego, 19 May 2026); Gulf flagship CEO statement (Washington Post / ABC, 7 May 2026). Gulf 13&times; is a median estimate; range 4&ndash;19&times; by hedge vintage.</p>
+      </figure>
+    </section>
+
+    <div class="col">
+      <h2>The mandate everyone points at is the small number</h2>
+      <p class="reveal">Carriers frame the coming decade as a SAF-cost problem. But run the ReFuelEU blend schedule through the mandate math and the per-passenger cost stays modest for years, and, counter-intuitively, <em>falls</em> when oil is expensive, because a costly fossil baseline shrinks the SAF premium. Set those mandate bars against today's published surcharges and the scale mismatch is the whole point.</p>
+    </div>
+
+    <!-- CHART 2 (Fig. 2) -->
+    <section class="evidence">
+      <figure aria-labelledby="c3-cap" aria-describedby="c3-desc">
+        <figcaption class="chart-figcap" id="c3-cap">
+          <b>Fig. 2 &middot; SAF-mandate cost vs today's published surcharges.</b><br>
+          FRA&ndash;JFK economy, one-way, &euro; per passenger. Y-axis is broken (&frasl;&frasl;) to hold both the mandate bars and the &euro;35&ndash;&euro;337 band of published surcharges.
+        </figcaption>
+        <p class="vh" id="c3-desc">Grouped bars by year with a broken vertical axis. Mandate cost at normal oil price (outline) and crisis oil times 2.1 (filled): 2025, 2.7 and 1.2; 2030, 13.9 and 9.5; 2035, 46.5 and 32.7; 2040, 78.0 and 55.5. Horizontal reference lines mark published surcharges: Northwestern transatlantic 35, Northwestern other long-haul 50, Atlantic LHR-SIN 75, Far Eastern HKG-LHR 152, Gulf DXB 302, Tokyo hub NRT 337.</p>
+
+        <div class="chart-scroll chart-scroll--wide">
+        <svg class="chart" viewBox="0 0 990 620" role="img" aria-label="SAF mandate cost versus published surcharges by year">
+          <g stroke-width="1.3" stroke-dasharray="6 5">
+            <line x1="95" y1="188.5" x2="915" y2="188.5" data-series stroke="#5AA06E"/>
+            <line x1="95" y1="79.8"  x2="915" y2="79.8"  data-series stroke="#C86A48"/>
+            <line x1="95" y1="54.4"  x2="915" y2="54.4"  data-series stroke="#9A7EAE"/>
+          </g>
+          <g font-size="11" text-anchor="start">
+            <text x="120" y="184" fill="#5AA06E">&euro;152 &middot; Far Eastern &middot; HKG&ndash;LHR</text>
+            <text x="120" y="75"  fill="#C86A48">&euro;302 &middot; Gulf &middot; DXB&ndash;Americas</text>
+            <text x="120" y="50"  fill="#9A7EAE">&euro;337 &middot; Tokyo hub &middot; NRT&ndash;Europe</text>
+          </g>
+          <g stroke="rgba(237,230,217,.34)" stroke-width="1.4" fill="none">
+            <path d="M78,204 l14,-6 M78,210 l14,-6"/>
+          </g>
+          <g stroke-width="1.3" stroke-dasharray="6 5">
+            <line x1="95" y1="402.5" x2="915" y2="402.5" data-series stroke="#6E92B0"/>
+            <line x1="95" y1="335"   x2="915" y2="335"   data-series stroke="#6E92B0" opacity=".7"/>
+            <line x1="95" y1="222.5" x2="915" y2="222.5" data-series stroke="#4F8CA0"/>
+          </g>
+          <g font-size="11" text-anchor="start">
+            <text x="120" y="398" fill="#6E92B0">&euro;35 &middot; Northwestern &middot; transatlantic</text>
+            <text x="120" y="331" fill="#6E92B0" opacity=".8">&euro;50 &middot; Northwestern &middot; other long-haul</text>
+            <text x="120" y="218" fill="#4F8CA0">&euro;75 &middot; Atlantic &middot; LHR&ndash;SIN</text>
+          </g>
+          <line x1="95" y1="45" x2="95" y2="560" stroke="rgba(237,230,217,.34)" stroke-width="1"/>
+          <line x1="95" y1="560" x2="915" y2="560" stroke="rgba(237,230,217,.34)" stroke-width="1"/>
+          <g fill="#6f665b" font-size="10.5" text-anchor="end">
+            <text x="88" y="564">0</text><text x="88" y="474">20</text><text x="88" y="384">40</text>
+            <text x="88" y="294">60</text><text x="88" y="204">80</text>
+            <text x="88" y="192">150</text><text x="88" y="84">300</text><text x="88" y="49">350</text>
+          </g>
+          <rect x="133.5" y="547.85" width="58" height="12.15" fill="none" stroke="#9A9082" stroke-width="1.6" data-series class="vbar"/>
+          <rect x="203.5" y="554.6"  width="58" height="5.4"   fill="#C86A48" data-series class="vbar"/>
+          <text x="162.5" y="540" fill="#9A9082" font-size="11" text-anchor="middle">&euro;2.7</text>
+          <text x="232.5" y="548" fill="#EDE6D9" font-size="11" text-anchor="middle">&euro;1.2</text>
+          <rect x="338.5" y="497.45" width="58" height="62.55" fill="none" stroke="#9A9082" stroke-width="1.6" data-series class="vbar"/>
+          <rect x="408.5" y="517.25" width="58" height="42.75" fill="#C86A48" data-series class="vbar"/>
+          <text x="367.5" y="489" fill="#9A9082" font-size="11" text-anchor="middle">&euro;13.9</text>
+          <text x="437.5" y="509" fill="#EDE6D9" font-size="11" text-anchor="middle">&euro;9.5</text>
+          <rect x="543.5" y="350.75" width="58" height="209.25" fill="none" stroke="#9A9082" stroke-width="1.6" data-series class="vbar"/>
+          <rect x="613.5" y="412.85" width="58" height="147.15" fill="#C86A48" data-series class="vbar"/>
+          <text x="572.5" y="342" fill="#9A9082" font-size="11" text-anchor="middle">&euro;46.5</text>
+          <text x="642.5" y="404" fill="#EDE6D9" font-size="11" text-anchor="middle">&euro;32.7</text>
+          <rect x="748.5" y="209"    width="58" height="351"    fill="none" stroke="#9A9082" stroke-width="1.6" data-series class="vbar"/>
+          <rect x="818.5" y="310.25" width="58" height="249.75" fill="#C86A48" data-series class="vbar"/>
+          <text x="777.5" y="201" fill="#EDE6D9" font-size="11" text-anchor="middle">&euro;78.0</text>
+          <text x="847.5" y="302" fill="#EDE6D9" font-size="11" text-anchor="middle">&euro;55.5</text>
+          <g font-size="13" fill="#EDE6D9" text-anchor="middle" font-family="Fraunces,serif" font-weight="500">
+            <text x="197.5" y="582">2025</text><text x="402.5" y="582">2030</text>
+            <text x="607.5" y="582">2035</text><text x="812.5" y="582">2040</text>
+          </g>
+          <g font-size="10" fill="#9A9082" text-anchor="middle">
+            <text x="197.5" y="598">2% blend</text><text x="402.5" y="598">6% blend</text>
+            <text x="607.5" y="598">20% blend</text><text x="812.5" y="598">34% blend</text>
+          </g>
+        </svg>
+        </div>
+        <p class="scroll-hint">Swipe the chart to read it full-width</p>
+        <div class="chart-legend">
+          <span style="color:var(--paper)"><span class="swatch" style="border:1.6px solid var(--muted)"></span>Mandate at normal oil price</span>
+          <span style="color:var(--paper)"><span class="swatch" style="background:var(--c-gulf)"></span>Mandate at crisis oil &times;2.1</span>
+        </div>
+        <p class="chart-note">Even at a 34% blend in 2040, the mandate sits below every carrier's <em>current</em> published surcharge except the cheapest transatlantic fare. The number carriers point toward is the small one on the page.</p>
+        <details class="data">
+          <summary>View data</summary>
+          <table>
+            <caption>SAF-mandate cost per passenger, &euro; one-way economy FRA&ndash;JFK</caption>
+            <thead><tr><th>Year</th><th>Blend</th><th>Normal oil (&euro;)</th><th>Crisis oil &times;2.1 (&euro;)</th></tr></thead>
+            <tbody>
+              <tr><td>2025</td><td>2%</td><td>2.7</td><td>1.2</td></tr>
+              <tr><td>2030</td><td>6%</td><td>13.9</td><td>9.5</td></tr>
+              <tr><td>2035</td><td>20%</td><td>46.5</td><td>32.7</td></tr>
+              <tr><td>2040</td><td>34%</td><td>78.0</td><td>55.5</td></tr>
+            </tbody>
+          </table>
+        </details>
+        <p class="chart-src">Mandate cost from Zaffra SAF Model v41.5: frozen eSAF &euro;7,520/t, HEFA &euro;1,925/t, 80% pass-through; blend %s per ReFuelEU Aviation Reg (EU) 2023/2405. Crisis oil &times;2.1 = jet &asymp; &euro;1,500/t observed Apr&ndash;May 2026.</p>
+      </figure>
+    </section>
+
+    <div class="col">
+      <h2>The mechanism is sticky by design</h2>
+      <p class="reveal">Trace one carrier's surcharge across twenty-two years and a pattern appears that fuel alone does not explain. It rises fast with the oil price and settles slowly, or not at all. That is not only opportunism. The YQ line exists for distribution reasons: it is exempt from agent commissions, quiet in fare displays, separable from refunds, and outside award-redemption math. The ratchet is what the mechanism is built to produce.</p>
+    </div>
+
+    <!-- CHART 3 (Fig. 3) -->
+    <section class="evidence">
+      <figure aria-labelledby="c2-cap" aria-describedby="c2-desc">
+        <figcaption class="chart-figcap" id="c2-cap">
+          <b>Fig. 3 &middot; One carrier's long-haul surcharge against Brent &amp; jet fuel, 22 years.</b><br>
+          <b>Dual axis:</b> surcharge in &pound; (left), fuel in $/bbl (right). The surcharge line is drawn only where consecutive primary-source data exists.
+        </figcaption>
+        <p class="vh" id="c2-desc">A 22-year dual-axis time series, 2004 to 2026. Left axis: one-way economy surcharge in pounds. Right axis: jet kerosene and Brent crude in dollars per barrel. Surcharge key points: 2004 GBP 2.50, 2006 GBP 35, 2008 peak GBP 109, 2009 GBP 38, 2014 GBP 239, January 2015 GBP 209, 2026 transatlantic estimate GBP 280, 2026 LHR-SIN GBP 64. Jet fuel peaks near 124 dollars in 2008 and 142 in 2022, reaching about 198 dollars per barrel in 2026, a 25-year-high crack spread of plus 97 dollars over Brent.</p>
+
+        <div class="chart-scroll chart-scroll--wide">
+        <svg class="chart" viewBox="0 0 990 540" role="img" aria-label="22-year surcharge versus fuel time series">
+          <g class="chart-grid" stroke="rgba(237,230,217,.11)" stroke-width="1">
+            <line x1="90" y1="500" x2="930" y2="500"/>
+            <line x1="90" y1="390" x2="930" y2="390"/>
+            <line x1="90" y1="280" x2="930" y2="280"/>
+            <line x1="90" y1="170" x2="930" y2="170"/>
+            <line x1="90" y1="60"  x2="930" y2="60"/>
+          </g>
+          <g fill="#EDE6D9" font-size="10.5" text-anchor="end">
+            <text x="82" y="504">&pound;0</text><text x="82" y="394">&pound;75</text>
+            <text x="82" y="284">&pound;150</text><text x="82" y="174">&pound;225</text><text x="82" y="64">&pound;300</text>
+          </g>
+          <g fill="#9A9082" font-size="10.5" text-anchor="start">
+            <text x="938" y="504">$0</text><text x="938" y="394">$62</text>
+            <text x="938" y="284">$125</text><text x="938" y="174">$187</text><text x="938" y="64">$250</text>
+          </g>
+          <polyline data-series fill="none" stroke="#9A7EAE" stroke-width="1.6" stroke-dasharray="5 5" opacity=".85"
+            points="90,432 166,398 242,330 319,300 395,330 434,390 510,300 586,300 662,318 739,300 815,322 892,322"/>
+          <text x="892" y="312" fill="#9A7EAE" font-size="10.5" text-anchor="end">$101 Brent</text>
+          <polyline data-series fill="none" stroke="#C86A48" stroke-width="2.2"
+            points="90,415 166,357 242,282 319,281 395,301 434,377 510,387 586,278 662,301 739,250 815,326 892,151"/>
+          <text x="300" y="270" fill="#C86A48" font-size="11">$124 jet &middot; 2008</text>
+          <text x="700" y="242" fill="#C86A48" font-size="11">$142 &middot; 2022</text>
+          <text x="884" y="145" fill="#C86A48" font-size="11" text-anchor="end">$198 jet &middot; 2026</text>
+          <polyline data-series fill="none" stroke="#EDE6D9" stroke-width="3"
+            points="90,496.3 166,448.7 242,340.1 252,359.2 281,444.3"/>
+          <polyline data-series fill="none" stroke="#EDE6D9" stroke-width="3"
+            points="472,149.4 510,193.4"/>
+          <g fill="#EDE6D9">
+            <circle cx="90" cy="496.3" r="4"/><circle cx="166" cy="448.7" r="4"/>
+            <circle cx="242" cy="340.1" r="4"/><circle cx="281" cy="444.3" r="4"/>
+            <circle cx="472" cy="149.4" r="4.5"/><circle cx="510" cy="193.4" r="4.5"/>
+            <circle cx="930" cy="89.3" r="5"/>
+            <circle cx="930" cy="406.1" r="5" fill="none" stroke="#EDE6D9" stroke-width="2"/>
+          </g>
+          <g font-size="11" fill="#EDE6D9">
+            <text x="90" y="486" text-anchor="middle">&pound;2.50</text>
+            <text x="238" y="330" text-anchor="end">&pound;109</text>
+            <text x="285" y="458">&pound;38</text>
+            <text x="472" y="140" text-anchor="middle">&pound;239</text>
+            <text x="516" y="188">&pound;209</text>
+            <text x="924" y="84" text-anchor="end">&pound;280*</text>
+            <text x="924" y="420" text-anchor="end">&pound;64 LHR&ndash;SIN</text>
+          </g>
+          <g fill="#9A9082" font-size="10.5" text-anchor="middle">
+            <text x="90" y="522">2004</text><text x="242" y="522">2008</text><text x="395" y="522">2012</text>
+            <text x="548" y="522">2016</text><text x="700" y="522">2020</text><text x="815" y="522">2023</text><text x="930" y="522">2026</text>
+          </g>
+        </svg>
+        </div>
+        <p class="scroll-hint">Swipe the chart to read it full-width</p>
+        <div class="chart-legend">
+          <span style="color:var(--paper)"><span class="swatch" style="background:var(--paper)"></span>Surcharge, one-way economy (&pound;, left)</span>
+          <span style="color:var(--c-gulf)"><span class="swatch swatch--line"></span>Jet kerosene ($/bbl, right)</span>
+          <span style="color:var(--c-tok)"><span class="swatch swatch--line" style="border-top-style:dashed"></span>Brent crude ($/bbl, right)</span>
+        </div>
+        <div class="ratchets">
+          <div class="ratchet">
+            <div class="ratchet__k">Ratchet 1 &middot; 2009 vs 2015</div>
+            <div class="ratchet__d">Jet fuel similar both years ($70 vs $64).</div>
+            <div class="ratchet__big">&pound;38 &rarr; &pound;209 &middot; <em>5.5&times;</em></div>
+          </div>
+          <div class="ratchet">
+            <div class="ratchet__k">Ratchet 2 &middot; 2014 peak vs 2026 est</div>
+            <div class="ratchet__d">2026 surcharge has surpassed the prior peak.</div>
+            <div class="ratchet__big">&pound;239 &rarr; &pound;280 &middot; <em>+17%</em></div>
+          </div>
+        </div>
+        <details class="data">
+          <summary>View data</summary>
+          <table>
+            <caption>Surcharge at points of change vs jet fuel annual average</caption>
+            <thead><tr><th>Date</th><th>Surcharge</th><th>Jet $/bbl</th></tr></thead>
+            <tbody>
+              <tr><td>May 2004</td><td>&pound;2.50</td><td>$48</td></tr>
+              <tr><td>Feb 2008</td><td>&pound;88</td><td>$124</td></tr>
+              <tr><td>Mid-2008 peak</td><td>&pound;109</td><td>$124</td></tr>
+              <tr><td>Spring 2009</td><td>&pound;38</td><td>$70</td></tr>
+              <tr><td>Pre-Xmas 2014</td><td>&pound;239</td><td>$113</td></tr>
+              <tr><td>27 Jan 2015</td><td>&pound;209</td><td>$64</td></tr>
+              <tr><td>Apr 2026 LHR&ndash;SIN</td><td>&pound;64</td><td>$198 NWE</td></tr>
+              <tr><td>2026 transatlantic est.</td><td>&pound;280*</td><td>$198 NWE</td></tr>
+            </tbody>
+          </table>
+        </details>
+        <p class="chart-src">Surcharge points from primary contemporaneous press (TravelMole, Travel Weekly UK, Head For Points). Jet fuel: EIA US Gulf Coast kerosene annual averages, NWE Argus $1,557/t &asymp; $198/bbl for 2026. Brent: EIA. *2026 transatlantic triangulated from business-class YQ trackers; economy &asymp; half.</p>
+      </figure>
+    </section>
+
+    <!-- PULL-QUOTE -->
+    <div class="pullquote reveal">
+      <blockquote>A surcharge labelled &ldquo;fuel&rdquo; that contains materially more than fuel is opaque by design.</blockquote>
+    </div>
+
+    <!-- REGULATORY FINDINGS -->
+    <section class="findings">
+      <h2 class="reveal">What the Commission said</h2>
+      <div class="finding reveal">
+        <div class="finding__pg">Notice, p.3</div>
+        <div class="finding__q">&ldquo;Cancellations caused by exceptionally high fuel prices &hellip; cannot be considered &lsquo;extraordinary circumstances&rsquo;.&rdquo;
+          <span class="finding__g">High fuel cost is not a defence against EU&nbsp;261 compensation.</span></div>
+      </div>
+      <div class="finding reveal">
+        <div class="finding__pg">Notice, p.4</div>
+        <div class="finding__q">&ldquo;Any retroactive change of the price is excluded.&rdquo;
+          <span class="finding__g">Reg 1008/2008 locks price at point of sale; post-sale YQ changes must go.</span></div>
+      </div>
+      <div class="finding reveal">
+        <div class="finding__pg">Notice, p.6</div>
+        <div class="finding__q">&ldquo;The cost of jet fuel can in principle not be considered a serious disturbance of operations giving rise to JNUS.&rdquo;
+          <span class="finding__g">Fuel cost is not a slot-waiver justification.</span></div>
+      </div>
+      <div class="finding reveal">
+        <div class="finding__pg">Notice, p.7</div>
+        <div class="finding__q">&ldquo;These are not &hellip; relevant justifications for the use of exemptions under Article 5(2) RFEUA.&rdquo;
+          <span class="finding__g">The tankering loophole is foreclosed pre-emptively. The SAF timeline holds.</span></div>
+      </div>
+    </section>
+
+    <!-- METHOD -->
+    <section class="rigor">
+      <h2>Method &amp; where this can be challenged</h2>
+      <p><b>The one-line method.</b> Fair pass-through is the per-passenger fuel cost recovered at the hedge-adjusted price move; the gap above it is everything else, currency, ETS/CORSIA, distribution, disruption, recovered under a single label called &ldquo;fuel.&rdquo;</p>
+      <p><b>The honest limitation.</b> Every multiplier is scaled from one disclosed hedge book and carries roughly &plusmn;10&ndash;20 points per carrier. The directional finding is robust; the specific numbers are best-estimate, not precise. The Gulf 13&times; in particular is a median across a 4&ndash;19&times; range.</p>
+      <p>The full derivations, the four-column Gulf sensitivity matrix, the primary-source table, and the glossary live in the methodology paper of record, available on request.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="foot-wrap">
+      <div class="foot-name">Anubhav Das</div>
+      <div class="foot-meta">Zaffra &middot; May 2026</div>
+      <div class="foot-actions">
+        <a class="foot-link" href="/writing">Back to writing</a>
+        <a class="foot-link" href="/">The road</a>
+        <a class="foot-email" href="mailto:anubhavdas1993@gmail.com">anubhavdas1993@gmail.com</a>
+      </div>
+    </div>
+  </footer>
+</Base>
+
+<style is:global>
+  /* warm categorical data palette — colours hardcoded (CSS var() is unreliable
+     inside SVG presentation attributes). Base tokens come from global.css. */
+  .progress{position:fixed;top:0;left:max(14px,3vw);width:2.5px;height:100vh;z-index:30;pointer-events:none;}
+  .progress__track{position:absolute;inset:0;background:var(--ghost);}
+  .progress__fill{position:absolute;top:0;left:0;width:100%;height:100%;background:var(--amber);
+    transform:scaleY(0);transform-origin:top;box-shadow:0 0 6px rgba(245,166,35,.55);}
+
+  main{position:relative;z-index:1;}
+
+  .scene{position:relative;min-height:78vh;min-height:78svh;display:flex;align-items:flex-end;
+    padding-block:16vh 9vh;overflow:hidden;
+    background:radial-gradient(130% 100% at 74% 22%,rgba(120,68,20,.24),transparent 58%),
+               radial-gradient(90% 80% at 12% 92%,rgba(80,46,14,.20),transparent 60%),
+               linear-gradient(180deg,#120C07,#0A0704);}
+  .scene::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(0deg,rgba(10,8,5,.62),transparent 55%);}
+  .wrap{position:relative;z-index:5;width:100%;max-width:1180px;margin:0 auto;padding-inline:var(--gut);}
+
+  .kicker{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:clamp(18px,3vh,30px);}
+  .kicker__num{font-family:var(--serif);font-weight:300;font-variation-settings:'opsz' 144;
+    font-size:clamp(1.8rem,4vw,3rem);line-height:.8;letter-spacing:-.03em;color:var(--amber);}
+  .kicker__meta{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);}
+  .article-title{font-family:var(--serif);font-weight:540;font-variation-settings:'opsz' 144;
+    font-size:clamp(2.3rem,5.4vw,4.3rem);line-height:1.02;letter-spacing:-.035em;color:var(--paper);
+    max-width:19ch;text-wrap:balance;}
+  .standfirst{font-family:var(--serif);font-weight:360;font-size:clamp(1.1rem,1.7vw,1.42rem);line-height:1.45;
+    color:#e6ddcd;max-width:50ch;margin-top:clamp(18px,3vh,28px);font-variation-settings:'opsz' 72,'SOFT' 18;}
+  .standfirst .accent{font-style:italic;color:var(--amber);
+    font-variation-settings:'opsz' 72,'WONK' 1,'SOFT' 50;}
+
+  .col{max-width:64ch;margin:0 auto;padding-inline:var(--gut);}
+  .col.first{padding-top:clamp(56px,10vh,120px);}
+  .col p{font-family:var(--serif);font-weight:390;font-size:clamp(1.12rem,1.3vw,1.26rem);line-height:1.62;
+    letter-spacing:-.003em;color:var(--paper);font-variation-settings:'opsz' 34,'SOFT' 8;margin-bottom:1.15em;text-wrap:pretty;}
+  .col p.lead{font-size:clamp(1.22rem,1.5vw,1.4rem);line-height:1.55;color:#efe8da;font-variation-settings:'opsz' 44,'SOFT' 10;}
+  .col h2{font-family:var(--serif);font-weight:520;font-variation-settings:'opsz' 72;
+    font-size:clamp(1.45rem,2.3vw,1.95rem);line-height:1.12;letter-spacing:-.025em;color:var(--paper);
+    margin:clamp(36px,6vh,60px) 0 clamp(14px,2vh,20px);text-wrap:balance;}
+
+  .evidence{width:100%;max-width:1180px;margin:clamp(46px,8vh,96px) auto;padding-inline:var(--gut);}
+
+  .figures{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);}
+  .fig{padding:clamp(22px,3.4vh,34px) clamp(10px,1.4vw,20px);border-left:1px solid var(--hair);}
+  .fig:first-child{border-left:0;}
+  .fig__n{font-family:var(--mono);font-weight:500;font-size:clamp(1.9rem,4.4vw,3.2rem);line-height:1;
+    letter-spacing:-.02em;color:var(--paper);font-variant-numeric:tabular-nums;}
+  .fig.is-verdict .fig__n{color:var(--amber);}
+  .fig__k{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--muted);margin-top:12px;line-height:1.5;}
+
+  figure{margin:0;}
+  .chart-scroll{width:100%;}
+  .chart{width:100%;height:auto;}
+  .scroll-hint{display:none;}
+  .chart-figcap{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--muted);margin-bottom:clamp(16px,2.4vh,24px);line-height:1.7;}
+  .chart-figcap b{color:var(--paper);font-weight:500;}
+  .chart-legend{display:flex;flex-wrap:wrap;gap:18px 26px;margin-top:20px;
+    font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--muted);}
+  .chart-legend span{display:inline-flex;align-items:center;gap:8px;}
+  .swatch{width:22px;height:11px;flex:0 0 auto;}
+  .swatch--line{height:0;border-top:2px solid currentColor;width:22px;}
+  .chart-note{font-family:var(--serif);font-style:italic;font-size:.98rem;color:#d8cfbf;
+    max-width:58ch;margin-top:clamp(18px,2.6vh,26px);line-height:1.5;}
+  .chart-src{font-family:var(--mono);font-size:10.5px;line-height:1.7;letter-spacing:.02em;color:var(--muted-2);
+    margin-top:16px;max-width:70ch;}
+  svg text{font-family:var(--mono);}
+
+  details.data{margin-top:22px;border-top:1px solid var(--hair);}
+  details.data>summary{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--muted);padding:14px 0;cursor:pointer;list-style:none;display:flex;align-items:center;gap:10px;}
+  details.data>summary::-webkit-details-marker{display:none;}
+  details.data>summary::before{content:"+";color:var(--amber);font-weight:500;}
+  details.data[open]>summary::before{content:"\2013";}
+  table{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:12.5px;color:var(--paper);
+    font-variant-numeric:tabular-nums;margin:8px 0 20px;}
+  caption{text-align:left;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--muted-2);padding-bottom:12px;}
+  th,td{text-align:right;padding:9px 14px;border-bottom:1px solid var(--hair);white-space:nowrap;}
+  th:first-child,td:first-child{text-align:left;}
+  thead th{color:var(--muted);font-weight:500;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;}
+  td .tick{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:9px;vertical-align:middle;}
+
+  .findings{max-width:64ch;margin:clamp(46px,8vh,90px) auto;padding-inline:var(--gut);}
+  .findings h2{font-family:var(--serif);font-weight:520;font-variation-settings:'opsz' 72;
+    font-size:clamp(1.45rem,2.3vw,1.95rem);letter-spacing:-.025em;margin-bottom:clamp(20px,3vh,32px);}
+  .finding{display:grid;grid-template-columns:auto 1fr;gap:20px;padding:clamp(20px,3vh,28px) 0;border-top:1px solid var(--hair);}
+  .finding__pg{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+    padding-top:.5em;white-space:nowrap;}
+  .finding__q{font-family:var(--serif);font-weight:400;font-size:clamp(1.08rem,1.5vw,1.28rem);line-height:1.42;
+    color:var(--paper);font-variation-settings:'opsz' 40,'SOFT' 8;}
+  .finding__g{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.02em;color:var(--muted);margin-top:10px;line-height:1.6;text-transform:none;}
+
+  .pullquote{max-width:64ch;margin:clamp(44px,8vh,88px) auto;padding-inline:var(--gut);}
+  .pullquote blockquote{font-family:var(--serif);font-style:italic;font-weight:400;
+    font-size:clamp(1.5rem,3vw,2.2rem);line-height:1.28;letter-spacing:-.02em;color:var(--amber);
+    font-variation-settings:'opsz' 96,'WONK' 1,'SOFT' 50;max-width:26ch;}
+
+  .rigor{max-width:64ch;margin:clamp(44px,8vh,88px) auto 0;padding-inline:var(--gut);}
+  .rigor h2{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:20px;}
+  .rigor p{font-family:var(--serif);font-weight:380;font-size:1.04rem;line-height:1.55;color:#d8cfbf;margin-bottom:1em;
+    font-variation-settings:'opsz' 30,'SOFT' 6;}
+  .rigor p b{color:var(--paper);font-weight:520;}
+
+  footer{position:relative;z-index:6;background:var(--ink-2);
+    padding:clamp(56px,10vh,120px) var(--gut) clamp(40px,7vh,72px);border-top:1px solid rgba(237,230,217,.08);margin-top:clamp(56px,10vh,120px);}
+  .foot-wrap{max-width:1180px;margin:0 auto;}
+  .foot-name{font-family:var(--serif);font-weight:520;font-size:clamp(2rem,5vw,3.4rem);letter-spacing:-.03em;line-height:1;font-variation-settings:'opsz' 144;}
+  .foot-meta{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:14px;}
+  .foot-actions{display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,56px);align-items:baseline;margin-top:clamp(36px,6vh,64px);}
+  .foot-link{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(1.15rem,1.8vw,1.5rem);
+    color:var(--paper);border-bottom:1px solid rgba(237,230,217,.35);padding-bottom:4px;transition:border-color .3s ease;}
+  .foot-link:hover{border-color:var(--paper);}
+  .foot-email{font-family:var(--mono);font-size:13px;letter-spacing:.04em;color:var(--muted);border-bottom:1px solid transparent;padding-bottom:4px;transition:color .3s,border-color .3s;}
+  .foot-email:hover{color:var(--paper);border-color:rgba(237,230,217,.3);}
+
+  .ratchets{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2vw,26px);margin-top:clamp(24px,3.4vh,36px);}
+  .ratchet{border:1px solid rgba(200,106,72,.5);padding:clamp(18px,2.6vh,26px);background:rgba(200,106,72,.05);}
+  .ratchet__k{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#C86A48;}
+  .ratchet__d{font-family:var(--serif);font-size:1rem;color:#d8cfbf;margin:10px 0 14px;line-height:1.4;}
+  .ratchet__big{font-family:var(--serif);font-weight:540;font-size:clamp(1.5rem,2.6vw,2.1rem);letter-spacing:-.02em;color:var(--paper);}
+  .ratchet__big em{font-style:normal;color:#C86A48;}
+
+  @media (max-width:820px){
+    .progress{display:none;}
+    .scene{min-height:66vh;}
+    .figures{grid-template-columns:repeat(2,1fr);}
+    .fig:nth-child(3){border-left:0;}
+    .fig:nth-child(-n+2){border-bottom:1px solid var(--hair);}
+    .pullquote blockquote{max-width:none;}
+    .ratchets{grid-template-columns:1fr;}
+  }
+  @media (max-width:640px){
+    .chart-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;
+      -webkit-mask-image:linear-gradient(90deg,#000 92%,transparent);mask-image:linear-gradient(90deg,#000 92%,transparent);}
+    .chart-scroll .chart{min-width:600px;}
+    .chart-scroll--wide .chart{min-width:720px;}
+    .scroll-hint{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2);margin-top:10px;}
+    .scroll-hint::before{content:"\2194  ";color:var(--amber);}
+  }
+  @media (max-width:560px){ .findings .finding{grid-template-columns:1fr;gap:8px;} }
+  @media (forced-colors:active){
+    .progress{display:none;}
+    .standfirst .accent{text-decoration:underline;}
+    .pullquote blockquote{text-decoration:underline;}
+  }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  const REDUCE = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const DESKTOP = window.matchMedia('(min-width: 821px)').matches;
+  const fillEl = document.getElementById('progress-fill');
+
+  // charts already show their finished state; JS only adds draw-in + the thread
+  if (!REDUCE) {
+    gsap.registerPlugin(ScrollTrigger);
+
+    if (DESKTOP && fillEl) {
+      ScrollTrigger.create({
+        trigger: document.documentElement, start: 'top top', end: 'bottom bottom', scrub: true,
+        onUpdate: (s) => { (fillEl as HTMLElement).style.transform = 'scaleY(' + s.progress.toFixed(4) + ')'; },
+      });
+    }
+    gsap.utils.toArray<HTMLElement>('.reveal').forEach((el) => {
+      gsap.from(el, { opacity: 0, y: 16, duration: 0.75, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 90%' } });
+    });
+    gsap.utils.toArray<HTMLElement>('.figures .fig').forEach((el, i) => {
+      gsap.from(el, { opacity: 0, y: 16, duration: 0.6, delay: i * 0.06, ease: 'power3.out', scrollTrigger: { trigger: '.figures', start: 'top 84%' } });
+    });
+    gsap.utils.toArray<SVGElement>('.chart .bar').forEach((el) => {
+      el.style.transformBox = 'fill-box'; el.style.transformOrigin = 'left center';
+      gsap.from(el, { scaleX: 0, duration: 0.9, ease: 'power3.out', scrollTrigger: { trigger: el.closest('figure'), start: 'top 78%' } });
+    });
+    gsap.utils.toArray<SVGElement>('.chart .vbar').forEach((el) => {
+      el.style.transformBox = 'fill-box'; el.style.transformOrigin = 'center bottom';
+      gsap.from(el, { scaleY: 0, duration: 0.9, ease: 'power3.out', scrollTrigger: { trigger: el.closest('figure'), start: 'top 78%' } });
+    });
+    gsap.utils.toArray<SVGGeometryElement>('.chart polyline').forEach((el) => {
+      if (el.getAttribute('stroke-dasharray')) return; // dashed reference lines keep their pattern
+      const len = el.getTotalLength ? el.getTotalLength() : 1200;
+      el.style.strokeDasharray = String(len); el.style.strokeDashoffset = String(len);
+      gsap.to(el, { strokeDashoffset: 0, duration: 1.4, ease: 'power2.out', scrollTrigger: { trigger: el.closest('figure'), start: 'top 74%' } });
+    });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => ScrollTrigger.refresh());
+    window.addEventListener('load', () => ScrollTrigger.refresh());
+  }
+</script>

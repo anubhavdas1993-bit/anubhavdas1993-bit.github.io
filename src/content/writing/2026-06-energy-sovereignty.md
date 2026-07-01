@@ -25,5 +25,3 @@ The thing we thought we were selling and the thing they were actually buying wer
 ## The lesson generalises
 
 Scaling hard technology is never one thing. It is a commercial reality built piece by piece around a molecule that, by the time the deal is real, is the least interesting part of it. The subsidy is a stage prop. The supply story is the plot.
-
-*This is a sample post, seeded so the page has something to show. Edit it, or replace it with your own. Every post is one Markdown file in `src/content/writing/`.*

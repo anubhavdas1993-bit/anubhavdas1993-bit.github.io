@@ -38,7 +38,11 @@ Write your post here as normal paragraphs.
 5. Click **Commit changes**. Done — it appears on your Writing page.
 
 > There's a ready-made copy at `src/content/writing/_template.md` you can duplicate.
-> **Note:** there is one **sample post** (`2026-06-energy-sovereignty.md`) — edit or delete it whenever.
+> An example post already lives there (`2026-06-energy-sovereignty.md`) that you can copy, edit, or delete.
+>
+> **Two kinds of post:** simple text essays are Markdown files here in `src/content/writing/` (easy, no coding).
+> Rich data articles with custom charts (like "The math behind the crisis-surcharge") are hand-built pages in
+> `src/pages/writing/` and are best changed with help.
 
 **Hide a post without deleting it:** set `draft: true`. Set it back to `false` to show it again.
 
