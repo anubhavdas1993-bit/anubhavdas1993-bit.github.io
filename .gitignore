@@ -15,8 +15,10 @@ node_modules/
 Thumbs.db
 *.log
 
-# Local Claude settings (personal, not team-shared)
-.claude/settings.local.json
+# Local Claude tooling — rules, commands, hooks, settings (personal, kept local)
+.claude/
+CLAUDE.md
+.session/
 
 # ── Personal / source documents — NEVER commit ──
 # (the originals now live outside the repo in ../Portfolio_Private_Source/)
@@ -32,6 +34,7 @@ prototypes/
 # ── Internal planning / process notes (kept locally, not shipped publicly) ──
 docs/superpowers/
 docs/NEW-SESSION-PROMPT.md
+docs/GUARDRAILS.md
 
 # ── OS / editor extras ──
 Desktop.ini
