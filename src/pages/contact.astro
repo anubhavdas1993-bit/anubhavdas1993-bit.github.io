@@ -1,0 +1,58 @@
+---
+import Base from '../layouts/Base.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+
+const email = 'anubhavdas1993@gmail.com';
+const channels = [
+  { label: 'LinkedIn', value: 'in/anubhavd', href: 'https://www.linkedin.com/in/anubhavd-71174359', ext: true },
+  { label: 'Writing', value: 'Read the essays', href: '/writing', ext: false },
+  { label: 'Résumé', value: 'Download PDF', href: '/Anubhav_Das_CV.pdf', ext: true },
+];
+---
+<Base
+  title="Contact · Anubhav Das"
+  description="Write to me. The fastest way to reach Anubhav Das is email; also on LinkedIn, and in writing."
+>
+  <main id="main" class="page page-enter contact">
+    <header class="masthead">
+      <h1 class="masthead__title">Write to me.</h1>
+      <p class="masthead__dek">The fastest way to reach me is email. If you have a technology sitting somewhere on the road, tell me which stage it is stuck at. I read everything.</p>
+    </header>
+
+    <a class="sig" href={`mailto:${email}`}>{email}</a>
+
+    <ul class="channels" role="list">
+      {channels.map((c) => (
+        <li class="channel">
+          <span class="channel__label">{c.label}</span>
+          <a
+            class="channel__link"
+            href={c.href}
+            {...(c.ext ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+          >{c.value}</a>
+        </li>
+      ))}
+    </ul>
+  </main>
+
+  <SiteFooter />
+</Base>
+
+<style>
+  .contact { display: flex; flex-direction: column; }
+  /* the ONE amber on this page: the email signature underline (the amber law). */
+  .sig {
+    align-self: flex-start;
+    font-family: var(--serif); font-weight: 480; font-variation-settings: 'opsz' 96;
+    font-size: clamp(1.7rem, 5vw, 3.4rem); line-height: 1.1; letter-spacing: -.02em; color: var(--paper);
+    border-bottom: 2px solid var(--amber); padding-bottom: 8px;
+    transition: color .3s ease;
+  }
+  .sig:hover { color: #fff; }
+
+  .channels { list-style: none; margin-top: clamp(48px, 8vh, 96px); display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: clamp(24px, 3vw, 44px); max-width: 60rem; }
+  .channel { border-top: 1px solid rgba(237, 230, 217, 0.12); padding-top: 16px; }
+  .channel__label { display: block; font-family: var(--mono); font-size: 10px; letter-spacing: .26em; text-transform: uppercase; color: var(--muted-2); margin-bottom: 12px; }
+  .channel__link { font-family: var(--serif); font-style: italic; font-weight: 420; font-size: clamp(1.15rem, 1.7vw, 1.4rem); color: var(--paper); border-bottom: 1px solid rgba(237, 230, 217, 0.35); padding-bottom: 3px; transition: border-color .3s ease; }
+  .channel__link:hover { border-color: var(--paper); }
+</style>

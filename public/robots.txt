@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://anubhavdas1993-bit.github.io/sitemap-index.xml

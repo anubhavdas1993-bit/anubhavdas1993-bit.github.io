@@ -1,0 +1,57 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+
+const posts = (await getCollection('writing', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
+const fmt = (d: Date) => d.toLocaleDateString('en-GB', { year: 'numeric', month: 'long' });
+---
+<Base
+  title="Writing · Anubhav Das"
+  description="Essays on energy sovereignty, eSAF economics and the commercial reality that decides whether hard technology scales."
+>
+  <main id="main" class="page page-enter">
+    <header class="masthead">
+      <h1 class="masthead__title">Writing.</h1>
+      <p class="masthead__dek">On energy sovereignty, eSAF economics and the Fischer-Tropsch lineage. The commercial reality that decides whether hard technology ever leaves the lab.</p>
+    </header>
+
+    {posts.length === 0 ? (
+      <p class="empty">The first pieces are on the way.</p>
+    ) : (
+      <ol class="index" role="list">
+        {posts.map((p, i) => (
+          <li class="entry">
+            <a class="entry__link" href={`/writing/${p.id}`}>
+              <span class="entry__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+              <span class="entry__body">
+                <span class="entry__date">{fmt(p.data.date)}{p.data.readingMinutes ? ` · ${p.data.readingMinutes} min` : ''}</span>
+                <span class="entry__title">{p.data.title}</span>
+                <span class="entry__dek">{p.data.dek}</span>
+              </span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    )}
+  </main>
+
+  <SiteFooter />
+</Base>
+
+<style>
+  .empty { font-family: var(--serif); font-style: italic; font-size: clamp(1.2rem, 2vw, 1.6rem); color: var(--paper-dim); }
+
+  .index { list-style: none; border-top: 1px solid rgba(237, 230, 217, 0.14); }
+  .entry { border-bottom: 1px solid rgba(237, 230, 217, 0.14); }
+  .entry__link { display: grid; grid-template-columns: auto 1fr; gap: clamp(20px, 4vw, 56px); align-items: baseline; padding: clamp(26px, 4vh, 44px) 0; transition: padding-left .35s ease; }
+  .entry__link:hover { padding-left: 10px; }
+  /* the ONE amber on this page: the index numbers (the amber law). */
+  .entry__num { font-family: var(--serif); font-weight: 300; font-variation-settings: 'opsz' 144; font-size: clamp(1.4rem, 2.4vw, 2rem); line-height: 1; color: var(--amber); }
+  .entry__body { display: block; }
+  .entry__date { display: block; font-family: var(--mono); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+  .entry__title { display: block; font-family: var(--serif); font-weight: 500; font-size: clamp(1.6rem, 3vw, 2.6rem); line-height: 1.08; letter-spacing: -.03em; color: var(--paper); text-wrap: balance; }
+  .entry__dek { display: block; font-family: var(--serif); font-weight: 360; font-size: clamp(1.05rem, 1.4vw, 1.25rem); line-height: 1.5; color: var(--paper-dim); margin-top: 12px; max-width: 60ch; text-wrap: pretty; }
+</style>

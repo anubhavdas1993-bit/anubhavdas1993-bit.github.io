@@ -1,0 +1,63 @@
+---
+// Global HTML shell: head, SEO, fonts, skip-link. Each page provides its own
+// <main id="main"> so the skip-link + landmarks stay correct per page.
+// Indexable by default; pass noindex only for pages that must stay private.
+// Self-hosted fonts (no third-party dependency; GDPR-friendly for an EU site).
+import '@fontsource-variable/fraunces/full.css';        // display: all axes (opsz/wght/SOFT/WONK)
+import '@fontsource-variable/fraunces/full-italic.css'; // italic accents
+import '@fontsource/jetbrains-mono/300.css';
+import '@fontsource/jetbrains-mono/400.css';
+import '@fontsource/jetbrains-mono/500.css';
+import '../styles/global.css';
+import SiteNav from '../components/SiteNav.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  /** OG/Twitter share image (absolute or site-relative). */
+  image?: string;
+  noindex?: boolean;
+}
+
+const {
+  title = 'Anubhav Das, climate-tech investor and deep-tech operator',
+  description =
+    'Hard technology lives or dies on the commercial reality around it, not the merit inside it. The road from idea to proven scale, worked from four seats.',
+  image = '/og-image.jpg',
+  noindex = false,
+} = Astro.props;
+
+// Canonical + absolute OG image resolved against the configured `site`.
+const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url).href;
+const ogImage = new URL(image, Astro.site ?? Astro.url).href;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex" />}
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <SiteNav />
+    <slot />
+  </body>
+</html>

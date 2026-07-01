@@ -1,0 +1,70 @@
+---
+// Global primary navigation. Present on every page (rendered by Base).
+// Amber-free by law. Transparent over the hero; gains a quiet ink backdrop on scroll.
+const path = Astro.url.pathname.replace(/\/+$/, '') || '/';
+const links = [
+  { href: '/work', label: 'Work' },
+  { href: '/writing', label: 'Writing' },
+  { href: '/contact', label: 'Contact' },
+];
+const isHere = (href: string) => path === href;
+---
+
+<header class="site-nav" id="site-nav" data-at-top="true">
+  <a class="site-nav__mark" href="/" aria-label="Anubhav Das, home">Anubhav Das</a>
+  <nav class="site-nav__links" aria-label="Primary">
+    {links.map((l) => (
+      <a href={l.href} class:list={['site-nav__link', { 'is-current': isHere(l.href) }]} aria-current={isHere(l.href) ? 'page' : undefined}>
+        {l.label}
+      </a>
+    ))}
+  </nav>
+</header>
+
+<style>
+  .site-nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: var(--z-nav);
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; padding: clamp(14px, 2.4vh, 22px) var(--gut);
+    background: transparent; border-bottom: 1px solid transparent;
+    transition: background .35s ease, border-color .35s ease, backdrop-filter .35s ease;
+  }
+  .site-nav:not([data-at-top='true']) {
+    background: rgba(12, 10, 7, 0.72);
+    -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+    border-bottom-color: rgba(237, 230, 217, 0.10);
+  }
+  .site-nav__mark {
+    font-family: var(--serif); font-weight: 520; font-size: clamp(1rem, 1.3vw, 1.15rem);
+    letter-spacing: -.02em; color: var(--paper); font-variation-settings: 'opsz' 40;
+    white-space: nowrap;
+  }
+  .site-nav__links { display: flex; align-items: center; gap: clamp(16px, 2.4vw, 34px); }
+  .site-nav__link {
+    font-family: var(--mono); font-size: 12px; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--muted); padding: 6px 0; position: relative; white-space: nowrap;
+    transition: color .25s ease;
+  }
+  .site-nav__link:hover { color: var(--paper); }
+  .site-nav__link.is-current { color: var(--paper); }
+  .site-nav__link.is-current::after {
+    content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--paper);
+  }
+
+  @media (max-width: 460px) {
+    .site-nav { padding-inline: 18px; }
+    .site-nav__mark { font-size: .92rem; }
+    .site-nav__links { gap: 15px; }
+    .site-nav__link { font-size: 11px; letter-spacing: .1em; }
+  }
+</style>
+
+<script>
+  // Quiet ink backdrop once the reader leaves the very top.
+  const nav = document.getElementById('site-nav');
+  if (nav) {
+    const onScroll = () => nav.setAttribute('data-at-top', String(window.scrollY < 40));
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+</script>

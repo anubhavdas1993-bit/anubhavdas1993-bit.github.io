@@ -1,0 +1,42 @@
+---
+// Shared footer for the sub-pages (Work / Writing / Contact).
+// The landing has its own bespoke footer inside TheRoad.astro.
+const email = 'anubhavdas1993@gmail.com';
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/work', label: 'Work' },
+  { href: '/writing', label: 'Writing' },
+  { href: '/contact', label: 'Contact' },
+];
+---
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p class="site-footer__name">Anubhav Das</p>
+    <p class="site-footer__meta">Berlin</p>
+    <nav class="site-footer__nav" aria-label="Footer">
+      {links.map((l, i) => (
+        <>
+          <a href={l.href}>{l.label}</a>{i < links.length - 1 ? <span aria-hidden="true">·</span> : null}
+        </>
+      ))}
+    </nav>
+    <a class="site-footer__email" href={`mailto:${email}`}>{email}</a>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--ink-2); border-top: 1px solid rgba(237, 230, 217, 0.08);
+    padding: clamp(56px, 10vh, 120px) var(--gut) clamp(36px, 6vh, 64px);
+    margin-top: clamp(64px, 12vh, 140px);
+  }
+  .site-footer__inner { max-width: var(--maxw); margin: 0 auto; }
+  .site-footer__name { font-family: var(--serif); font-weight: 520; font-size: clamp(1.8rem, 4.5vw, 3rem); letter-spacing: -.03em; line-height: 1; font-variation-settings: 'opsz' 144; color: var(--paper); }
+  .site-footer__meta { font-family: var(--mono); font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-top: 14px; }
+  .site-footer__nav { margin-top: clamp(28px, 5vh, 48px); display: flex; flex-wrap: wrap; align-items: center; gap: 12px; font-family: var(--mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; }
+  .site-footer__nav a { color: var(--muted); transition: color .25s ease; }
+  .site-footer__nav a:hover { color: var(--paper); }
+  .site-footer__nav span { color: var(--muted-2); }
+  .site-footer__email { display: inline-block; margin-top: 22px; font-family: var(--mono); font-size: 13px; letter-spacing: .02em; color: var(--muted); border-bottom: 1px solid transparent; padding-bottom: 3px; transition: color .25s, border-color .25s; }
+  .site-footer__email:hover { color: var(--paper); border-color: rgba(237, 230, 217, 0.3); }
+</style>

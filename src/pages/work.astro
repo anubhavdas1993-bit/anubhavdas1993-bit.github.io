@@ -1,0 +1,121 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+
+// Roles from the editable collection, most recent first.
+const roles = (await getCollection('experience')).sort((a, b) => a.data.order - b.data.order);
+
+// Stable, low-churn content kept inline (documented in CONTENT-EDITING.md).
+const beyond = [
+  { t: 'A public voice', d: 'A widely-read analytical voice on energy sovereignty, eSAF economics and the Fischer-Tropsch lineage; read by sector CEOs and policy leads.' },
+  { t: 'Grant-stage diligence', d: 'Co-led technical and financial due diligence on 100+ MedTech, energy and climate startups for the EU Innovation Fund and Horizon 2020 (EIB / Bpifrance).' },
+  { t: 'Angel investing', d: 'Backed nine early-stage platforms as part of angel cohorts.' },
+  { t: 'Pro-bono', d: 'Climate-tech thesis work for a German VC; Brandenburg animal-welfare initiatives; sponsoring K-12 education for three specially-abled students in India.' },
+];
+const education = [
+  { school: 'ESCP Business School', place: 'Paris · Berlin', years: '2018 - 2020', detail: 'MSc Management & MSc Finance. ESCP Merit Scholar. GMAT 710.' },
+  { school: 'BITS Pilani', place: 'India', years: '2011 - 2016', detail: 'MSc Biotechnology & BEng Chemical Engineering. Minor in Media Businesses.' },
+];
+---
+<Base
+  title="Work · Anubhav Das"
+  description="Ten years, five seats on the road from idea to proven scale: founder, climate-tech investor, and operator. What I did in each."
+>
+  <main id="main" class="page page-enter">
+    <header class="masthead">
+      <h1 class="masthead__title">The work behind the road.</h1>
+      <p class="masthead__dek">Ten years, five seats on the road from idea to proven scale: founder, climate-tech investor, operator. Here is what I actually did in each, and where it sits on that road.</p>
+    </header>
+
+    <ol class="roles" role="list">
+      {roles.map((r) => (
+        <li class="role">
+          <div class="role__id">
+            <span class="role__num" aria-hidden="true">{String(r.data.order).padStart(2, '0')}</span>
+            {r.data.stage && <span class="role__stage">{r.data.stage}</span>}
+            <h2 class="role__title">{r.data.role}</h2>
+            <p class="role__co">{r.data.company}</p>
+            {r.data.context && <p class="role__context">{r.data.context}</p>}
+            <p class="role__meta">{r.data.start} - {r.data.end}{r.data.location ? ` · ${r.data.location}` : ''}</p>
+          </div>
+          <ul class="role__points" role="list">
+            {r.data.highlights.map((h) => <li>{h}</li>)}
+          </ul>
+        </li>
+      ))}
+    </ol>
+
+    <section class="block" aria-labelledby="beyond-h">
+      <h2 class="block__title" id="beyond-h">Beyond the desk</h2>
+      <div class="beyond">
+        {beyond.map((b) => (
+          <div class="beyond__item">
+            <h3 class="beyond__t">{b.t}</h3>
+            <p class="beyond__d">{b.d}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="edu-h">
+      <h2 class="block__title" id="edu-h">Education</h2>
+      <div class="edu">
+        {education.map((e) => (
+          <div class="edu__item">
+            <div class="edu__head">
+              <h3 class="edu__school">{e.school}</h3>
+              <span class="edu__years">{e.years}</span>
+            </div>
+            <p class="edu__place">{e.place}</p>
+            <p class="edu__detail">{e.detail}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <SiteFooter />
+</Base>
+
+<style>
+  /* amber appears ONLY as the seat numbers on this page (the amber law). */
+  .roles { list-style: none; display: flex; flex-direction: column; gap: clamp(20px, 3vh, 34px); }
+
+  .role {
+    display: grid; grid-template-columns: minmax(220px, 0.85fr) 1.6fr; gap: clamp(24px, 4vw, 64px);
+    background: #12100B; border: 1px solid rgba(237, 230, 217, 0.09); border-radius: 14px;
+    padding: clamp(24px, 3.4vw, 46px);
+  }
+  .role__num { display: block; font-family: var(--serif); font-weight: 300; font-variation-settings: 'opsz' 144; font-size: clamp(2.4rem, 4vw, 3.4rem); line-height: .8; letter-spacing: -.03em; color: var(--amber); }
+  .role__stage { display: inline-block; margin-top: 16px; font-family: var(--mono); font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: var(--muted-2); }
+  .role__title { font-family: var(--serif); font-weight: 500; font-size: clamp(1.5rem, 2.4vw, 2.1rem); line-height: 1.06; letter-spacing: -.02em; color: var(--paper); margin-top: 10px; }
+  .role__co { font-family: var(--serif); font-weight: 440; font-size: clamp(1.05rem, 1.4vw, 1.25rem); color: var(--paper-dim); margin-top: 4px; }
+  .role__context { font-family: var(--mono); font-size: 12px; line-height: 1.5; letter-spacing: .01em; color: var(--muted); margin-top: 12px; max-width: 34ch; }
+  .role__meta { font-family: var(--mono); font-size: 11.5px; letter-spacing: .06em; color: var(--muted-2); margin-top: 16px; }
+
+  .role__points { list-style: none; display: flex; flex-direction: column; gap: 16px; align-self: center; }
+  .role__points li { position: relative; padding-left: 26px; font-family: var(--serif); font-weight: 380; font-size: clamp(1rem, 1.2vw, 1.14rem); line-height: 1.5; color: var(--paper); max-width: 62ch; text-wrap: pretty; }
+  .role__points li::before { content: ''; position: absolute; left: 0; top: .72em; width: 14px; height: 1px; background: var(--muted); }
+
+  .block { margin-top: clamp(56px, 9vh, 104px); }
+  .block__title { font-family: var(--serif); font-weight: 500; font-size: clamp(1.8rem, 3vw, 2.6rem); letter-spacing: -.03em; color: var(--paper); margin-bottom: clamp(28px, 4vh, 44px); }
+
+  .beyond { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: clamp(20px, 3vw, 40px); }
+  .beyond__item { border-top: 1px solid rgba(237, 230, 217, 0.12); padding-top: 20px; }
+  .beyond__t { font-family: var(--serif); font-weight: 480; font-size: clamp(1.15rem, 1.5vw, 1.35rem); color: var(--paper); }
+  .beyond__d { font-family: var(--serif); font-weight: 360; font-size: clamp(1rem, 1.2vw, 1.1rem); line-height: 1.55; color: var(--paper-dim); margin-top: 10px; text-wrap: pretty; }
+
+  .edu { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: clamp(20px, 3vw, 40px); }
+  .edu__item { border-top: 1px solid rgba(237, 230, 217, 0.12); padding-top: 20px; }
+  .edu__head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+  .edu__school { font-family: var(--serif); font-weight: 500; font-size: clamp(1.2rem, 1.7vw, 1.5rem); color: var(--paper); }
+  .edu__years { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; color: var(--muted); white-space: nowrap; }
+  .edu__place { font-family: var(--mono); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted-2); margin-top: 8px; }
+  .edu__detail { font-family: var(--serif); font-weight: 360; font-size: clamp(1rem, 1.2vw, 1.1rem); line-height: 1.5; color: var(--paper-dim); margin-top: 12px; }
+
+  @media (max-width: 720px) {
+    .role { grid-template-columns: 1fr; gap: 22px; }
+    .role__points { align-self: start; }
+  }
+</style>

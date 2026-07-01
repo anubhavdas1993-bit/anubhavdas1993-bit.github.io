@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Anubhav Das">
+  <rect width="32" height="32" rx="6" fill="#0C0A07"/>
+  <!-- the road: a faint thread with an amber head, the site's signature -->
+  <line x1="16" y1="6" x2="16" y2="26" stroke="#EDE6D9" stroke-opacity="0.16" stroke-width="2" stroke-linecap="round"/>
+  <line x1="16" y1="16" x2="16" y2="26" stroke="#F5A623" stroke-width="2.4" stroke-linecap="round"/>
+  <circle cx="16" cy="16" r="3" fill="#FFE6B8"/>
+  <circle cx="16" cy="16" r="5.5" fill="#F5A623" fill-opacity="0.22"/>
+</svg>

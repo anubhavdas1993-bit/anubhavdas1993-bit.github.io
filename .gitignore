@@ -1,0 +1,40 @@
+# Astro build output
+dist/
+.astro/
+
+# Dependencies
+node_modules/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log
+
+# Local Claude settings (personal, not team-shared)
+.claude/settings.local.json
+
+# ── Personal / source documents — NEVER commit ──
+# (the originals now live outside the repo in ../Portfolio_Private_Source/)
+Profile_Files/
+*.docx
+*.pdf
+# ...but a résumé you deliberately publish lives in public/ — allow that one:
+!public/**/*.pdf
+
+# ── Throwaway design exploration & screenshots (kept locally as build reference) ──
+prototypes/
+
+# ── Internal planning / process notes (kept locally, not shipped publicly) ──
+docs/superpowers/
+
+# ── OS / editor extras ──
+Desktop.ini
+ehthumbs.db
+.idea/
+.vscode/
+*.swp

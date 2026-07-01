@@ -1,0 +1,98 @@
+/* ============================================================================
+   THE ROAD — site-wide base. Locked design system (see DESIGN.md).
+   Warm amber world. Amber (#F5A623) is reserved for its three homes only
+   (stage numbers, the one accent phrase per stage, the road) — never here.
+   ========================================================================== */
+:root {
+  --ink: #0C0A07;        /* warm near-black, amber-tinted — the world */
+  --ink-2: #100C08;      /* footer / deepest panels */
+  --paper: #EDE6D9;      /* warm off-white — body text */
+  --paper-dim: #C9C0B2;
+  --muted: #9A9082;      /* warm-grey — JetBrains Mono data/labels */
+  --muted-2: #6f665b;    /* fainter mono */
+  --amber: #F5A623;      /* the ONLY accent (see the amber law) */
+  --ghost: rgba(237,230,217,.16); /* road ghost thread — non-amber */
+
+  --serif: 'Fraunces Variable', 'Fraunces', Georgia, 'Times New Roman', serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', monospace;
+
+  --gut: clamp(22px, 6vw, 104px);
+  --maxw: 1480px;
+
+  /* semantic z-scale */
+  --z-road: 4;
+  --z-content: 5;
+  --z-footer: 6;
+  --z-nav: 60;
+  --z-skip: 80;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; background: var(--ink); }
+body {
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--serif);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+img, svg, video, canvas { display: block; max-width: 100%; }
+::selection { background: rgba(237,230,217,.20); color: var(--ink); } /* not amber */
+:focus-visible { outline: 2px solid var(--paper); outline-offset: 3px; border-radius: 2px; } /* not amber */
+
+/* visually hidden (screen-reader only) */
+.vh {
+  position: absolute !important; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0);
+  white-space: nowrap; border: 0;
+}
+
+/* skip link */
+.skip-link {
+  position: fixed; top: 10px; left: 10px; z-index: var(--z-skip);
+  background: var(--paper); color: var(--ink);
+  font-family: var(--mono); font-size: 13px; letter-spacing: .04em;
+  padding: 10px 16px; border-radius: 4px;
+  transform: translateY(-160%); transition: transform .18s ease;
+}
+.skip-link:focus { transform: translateY(0); }
+
+/* ── shared sub-page primitives (Work / Writing / Contact — not the landing) ── */
+.page {
+  padding-top: clamp(104px, 15vh, 168px);
+  padding-bottom: clamp(40px, 8vh, 96px);
+  padding-inline: var(--gut);
+  max-width: var(--maxw);
+  margin: 0 auto;
+  min-height: 100vh;
+}
+.masthead { max-width: 62rem; margin-bottom: clamp(44px, 8vh, 92px); }
+.masthead__title {
+  font-family: var(--serif); font-weight: 500;
+  font-size: clamp(2.6rem, 6.5vw, 4.8rem); line-height: 1.02; letter-spacing: -.038em;
+  font-variation-settings: 'opsz' 144; color: var(--paper); text-wrap: balance;
+}
+.masthead__dek {
+  font-family: var(--serif); font-weight: 360;
+  font-size: clamp(1.12rem, 1.7vw, 1.42rem); line-height: 1.5; letter-spacing: -.01em;
+  color: var(--paper-dim); margin-top: clamp(18px, 3vh, 28px); max-width: 48ch; text-wrap: pretty;
+}
+
+/* quiet enter for sub-page content; enhances an already-visible default */
+@media (prefers-reduced-motion: no-preference) {
+  .page-enter { animation: page-enter .6s cubic-bezier(.22,.61,.36,1) both; }
+  @keyframes page-enter { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+}
+
+/* Global accessibility gate — every motion island must respect this. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
+}

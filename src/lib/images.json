@@ -1,0 +1,171 @@
+{
+  "_note": "GENERATED FILE. Real imagery from Wikimedia Commons (freely licensed); each route v1/v2/v3 gets a distinct photo per section. Regenerate: node scripts/build-images-commons.mjs",
+  "v1": {
+    "intro": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Equipment_and_glassware.jpg/3840px-Equipment_and_glassware.jpg",
+      "alt": "A research laboratory interior, glassware and instruments on the bench, where the technology has to work before anything else can.",
+      "credit": {
+        "name": "Belikov Maxim (CC BY 4.0)",
+        "profile": "https://commons.wikimedia.org/wiki/File:Equipment_and_glassware.jpg"
+      },
+      "placeholder": false
+    },
+    "idea": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/7/71/Mumbai_Metro_train_window.jpg",
+      "alt": "A crowded Mumbai scene, the dense ground where an idea first meets a market that wants something bespoke from everyone.",
+      "credit": {
+        "name": "Rajarshi MITRA from Mumbai, India (CC BY 2.0)",
+        "profile": "https://commons.wikimedia.org/wiki/File:Mumbai_Metro_train_window.jpg"
+      },
+      "placeholder": false
+    },
+    "early": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/View_from_Park_inn_Berlin_November_2013.jpg/3840px-View_from_Park_inn_Berlin_November_2013.jpg",
+      "alt": "Berlin's cityscape, the early-stage city where pilots are pushed to become products.",
+      "credit": {
+        "name": "Arild Vågen (CC BY-SA 3.0)",
+        "profile": "https://commons.wikimedia.org/wiki/File:View_from_Park_inn_Berlin_November_2013.jpg"
+      },
+      "placeholder": false
+    },
+    "valley": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/3/3b/Petroleumhaven_Amsterdam_Netherlands.jpg",
+      "alt": "An industrial harbour, tanks and cranes along dark water, the valley floor where first-of-a-kind plants are financed or die.",
+      "credit": {
+        "name": "Marc Bos (CC BY-SA 3.0)",
+        "profile": "https://commons.wikimedia.org/wiki/File:Petroleumhaven_Amsterdam_Netherlands.jpg"
+      },
+      "placeholder": false
+    },
+    "scale": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/The_skyline_of_The_City_of_London%2C_London%27s_financial_district_%2816608813171%29.jpg/3840px-The_skyline_of_The_City_of_London%2C_London%27s_financial_district_%2816608813171%29.jpg",
+      "alt": "The City of London financial district, towers at dusk, where proven assets finally look like infrastructure.",
+      "credit": {
+        "name": "traveljunction (CC BY-SA 2.0)",
+        "profile": "https://commons.wikimedia.org/wiki/File:The_skyline_of_The_City_of_London,_London%27s_financial_district_(16608813171).jpg"
+      },
+      "placeholder": false
+    },
+    "close": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/De_Molen_%28windmill%29_and_the_nuclear_power_plant_cooling_tower_in_Doel%2C_Belgium_%28DSCF3859%29.jpg/3840px-De_Molen_%28windmill%29_and_the_nuclear_power_plant_cooling_tower_in_Doel%2C_Belgium_%28DSCF3859%29.jpg",
+      "alt": "An industrial energy landscape at dusk, stacks and steam against the sky, the road still ahead.",
+      "credit": {
+        "name": "Trougnouf (CC BY 4.0)",
+        "profile": "https://commons.wikimedia.org/wiki/File:De_Molen_(windmill)_and_the_nuclear_power_plant_cooling_tower_in_Doel,_Belgium_(DSCF3859).jpg"
+      },
+      "placeholder": false
+    }
+  },
+  "v2": {
+    "intro": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Vintage_laboratory_glassware.jpg",
+      "alt": "A research laboratory interior, glassware and instruments on the bench, where the technology has to work before anything else can.",
+      "credit": {
+        "name": "LukaszKatlewa (CC BY 4.0)",
+        "profile": "https://commons.wikimedia.org/wiki/File:Vintage_laboratory_glassware.jpg"
+      },
+      "placeholder": false
+    },
+    "idea": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Men_selling_goods_at_a_traffic_signal_in_Mumbai_%2818566905071%29.jpg/3840px-Men_selling_goods_at_a_traffic_signal_in_Mumbai_%2818566905071%29.jpg",
+      "alt": "A crowded Mumbai scene, the dense ground where an idea first meets a market that wants something bespoke from everyone.",
+      "credit": {
+        "name": "Vikramdeep Sidhu from Jhajjar, India (CC BY 2.0)",
+        "profile": "https://commons.wikimedia.org/wiki/File:Men_selling_goods_at_a_traffic_signal_in_Mumbai_(18566905071).jpg"
+      },
+      "placeholder": false
+    },
+    "early": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Cityscape_Berlin.jpg/3840px-Cityscape_Berlin.jpg",
+      "alt": "Berlin's cityscape, the early-stage city where pilots are pushed to become products.",
+      "credit": {
+        "name": "Thomas Wolf, www.foto-tw.de (CC BY-SA 3.0)",
+        "profile": "https://commons.wikimedia.org/wiki/File:Cityscape_Berlin.jpg"
+      },
+      "placeholder": false
+    },
+    "valley": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/2019.10-482-153bp2_aerial_view_of_Zevende_Petroleumhaven%2CEuropoort%2CRotterdam%2CNL_wed23oct2019-1818h.jpg/3840px-2019.10-482-153bp2_aerial_view_of_Zevende_Petroleumhaven%2CEuropoort%2CRotterdam%2CNL_wed23oct2019-1818h.jpg",
+      "alt": "An industrial harbour, tanks and cranes along dark water, the valley floor where first-of-a-kind plants are financed or die.",
+      "credit": {
+        "name": "Rik Schuiling / TropCrop-TCS (CC BY-SA 4.0)",
+        "profile": "https://commons.wikimedia.org/wiki/File:2019.10-482-153bp2_aerial_view_of_Zevende_Petroleumhaven,Europoort,Rotterdam,NL_wed23oct2019-1818h.jpg"
+      },
+      "placeholder": false
+    },
+    "scale": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/5/55/City_of_London_skyline_1.jpg",
+      "alt": "The City of London financial district, towers at dusk, where proven assets finally look like infrastructure.",
+      "credit": {
+        "name": "Dimitri Hon (CC BY-SA 3.0)",
+        "profile": "https://commons.wikimedia.org/wiki/File:City_of_London_skyline_1.jpg"
+      },
+      "placeholder": false
+    },
+    "close": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Sunset_at_Thermal_power_plant%2C_Barwala_%2CHisar.jpg/3840px-Sunset_at_Thermal_power_plant%2C_Barwala_%2CHisar.jpg",
+      "alt": "An industrial energy landscape at dusk, stacks and steam against the sky, the road still ahead.",
+      "credit": {
+        "name": "Incredible Indiana (CC BY-SA 3.0)",
+        "profile": "https://commons.wikimedia.org/wiki/File:Sunset_at_Thermal_power_plant,_Barwala_,Hisar.jpg"
+      },
+      "placeholder": false
+    }
+  },
+  "v3": {
+    "intro": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Laboratory_equipment_of_modern_chemistry_classroom.jpg/3840px-Laboratory_equipment_of_modern_chemistry_classroom.jpg",
+      "alt": "A research laboratory interior, glassware and instruments on the bench, where the technology has to work before anything else can.",
+      "credit": {
+        "name": "Belikov Maxim (CC BY 4.0)",
+        "profile": "https://commons.wikimedia.org/wiki/File:Laboratory_equipment_of_modern_chemistry_classroom.jpg"
+      },
+      "placeholder": false
+    },
+    "idea": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/b/be/Crowd_of_people_on_Bandra_station_platforms_4_and_5.jpg",
+      "alt": "A crowded Mumbai scene, the dense ground where an idea first meets a market that wants something bespoke from everyone.",
+      "credit": {
+        "name": "Rakesh from Bangalore (CC BY-SA 2.0)",
+        "profile": "https://commons.wikimedia.org/wiki/File:Crowd_of_people_on_Bandra_station_platforms_4_and_5.jpg"
+      },
+      "placeholder": false
+    },
+    "early": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/9/99/Berlin_skyline_2009w.jpg",
+      "alt": "Berlin's cityscape, the early-stage city where pilots are pushed to become products.",
+      "credit": {
+        "name": "Casp (CC BY-SA 3.0)",
+        "profile": "https://commons.wikimedia.org/wiki/File:Berlin_skyline_2009w.jpg"
+      },
+      "placeholder": false
+    },
+    "valley": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Container_Terminal_Burchardkai_night.jpg/3840px-Container_Terminal_Burchardkai_night.jpg",
+      "alt": "An industrial harbour, tanks and cranes along dark water, the valley floor where first-of-a-kind plants are financed or die.",
+      "credit": {
+        "name": "mybroetchen (CC BY 2.0)",
+        "profile": "https://commons.wikimedia.org/wiki/File:Container_Terminal_Burchardkai_night.jpg"
+      },
+      "placeholder": false
+    },
+    "scale": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/4/4c/London_S_Financial_District_At_Night_%28222734443%29.jpeg",
+      "alt": "The City of London financial district, towers at dusk, where proven assets finally look like infrastructure.",
+      "credit": {
+        "name": "Tariq Khan (CC BY 3.0)",
+        "profile": "https://commons.wikimedia.org/wiki/File:London_S_Financial_District_At_Night_(222734443).jpeg"
+      },
+      "placeholder": false
+    },
+    "close": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Sunset_above_power_plant_%28Unsplash%29.jpg/3840px-Sunset_above_power_plant_%28Unsplash%29.jpg",
+      "alt": "An industrial energy landscape at dusk, stacks and steam against the sky, the road still ahead.",
+      "credit": {
+        "name": "Viktor Kiryanov vki (CC0)",
+        "profile": "https://commons.wikimedia.org/wiki/File:Sunset_above_power_plant_(Unsplash).jpg"
+      },
+      "placeholder": false
+    }
+  }
+}

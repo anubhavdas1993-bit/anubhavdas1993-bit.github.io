@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+---
+<Base title="Not found · Anubhav Das" description="This page could not be found." noindex={true}>
+  <main id="main" class="page page-enter nf">
+    <p class="nf__code" aria-hidden="true">404</p>
+    <h1 class="nf__title">This road doesn't exist.</h1>
+    <p class="nf__dek">The page you were looking for isn't here. The road itself, though, is worth a walk.</p>
+    <a class="nf__home" href="/">Return to the start</a>
+  </main>
+  <SiteFooter />
+</Base>
+
+<style>
+  .nf { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; min-height: 72vh; }
+  /* the one amber on this page: the 404 (the amber law). */
+  .nf__code { font-family: var(--serif); font-weight: 300; font-variation-settings: 'opsz' 144; font-size: clamp(4rem, 14vw, 9rem); line-height: .8; letter-spacing: -.04em; color: var(--amber); }
+  .nf__title { font-family: var(--serif); font-weight: 500; font-size: clamp(2rem, 5vw, 3.4rem); letter-spacing: -.03em; color: var(--paper); margin-top: clamp(20px, 3vh, 32px); }
+  .nf__dek { font-family: var(--serif); font-weight: 360; font-size: clamp(1.1rem, 1.6vw, 1.35rem); color: var(--paper-dim); margin-top: 16px; max-width: 42ch; text-wrap: pretty; }
+  .nf__home { margin-top: clamp(28px, 4vh, 44px); font-family: var(--mono); font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--paper); border-bottom: 1px solid rgba(237,230,217,.35); padding-bottom: 4px; transition: border-color .3s ease; }
+  .nf__home:hover { border-color: var(--paper); }
+</style>
