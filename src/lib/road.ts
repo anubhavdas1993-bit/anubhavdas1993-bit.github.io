@@ -1,25 +1,13 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// THE ROAD — single content source shared by /v1, /v2, /v3.
-// Copy is LOCKED and verbatim from docs/superpowers/reference/landing-brief.md.
-// Do not paraphrase, shorten, or reuse earlier drafts. No em dashes. No CTA copy.
+// THE ROAD — the landing narrative (content source for src/components/TheRoad.astro).
+// Copy is LOCKED and verbatim. Do not paraphrase, shorten, or reuse earlier drafts.
+// No em/en dashes. No CTA copy. No deal figures.
 //
 // The ONE emphasised phrase per stage is wrapped in [square brackets] in the
 // `body` string; the renderer strips the brackets and colours that run amber.
 // Amber appears in EXACTLY three places sitewide: stage numbers, the bracketed
-// phrase, and the glowing line + its head. Everything else is warm off-white
-// (prose) or muted warm grey monospace (kill-lists, receipts).
+// phrase, and the glowing road line + its head.
 // ─────────────────────────────────────────────────────────────────────────────
-
-import imageData from './images.json';
-
-export type ImageMeta = {
-  src: string;
-  alt: string;
-  /** Photographer credit, present only on real (baked) Unsplash images. */
-  credit: { name: string; profile: string } | null;
-  /** True while still a dev placeholder (not a baked Unsplash city image). */
-  placeholder: boolean;
-};
 
 export type Stage = {
   key: string;
@@ -32,10 +20,6 @@ export type Stage = {
   body: string;         // prose with the single [bracketed] amber phrase
   receipt: string;      // muted grey mono receipt line
 };
-
-// images.json is keyed by variant -> section -> ImageMeta, so each route
-// (v1/v2/v3) shows a DIFFERENT photo of the same locked subjects.
-const imagesByVariant = imageData as Record<string, Record<string, ImageMeta>>;
 
 export const intro = {
   ident: 'Anubhav Das',
@@ -179,58 +163,3 @@ export const footer = {
   link: { label: 'See my journey in detail', href: '/work' },
   email: 'anubhavdas1993@gmail.com',
 };
-
-/** Variant config: only TYPE and MOTION change across v1/v2/v3. */
-export type Variant = 'v1' | 'v2' | 'v3';
-
-export const variants: Record<Variant, {
-  label: string;
-  serif: string;
-  mono: string;
-  fontHref: string;
-  motion: string; // motion-style id read by the client script
-}> = {
-  v1: {
-    label: 'Cinematic — Fraunces / JetBrains Mono',
-    serif: "'Fraunces', Georgia, serif",
-    mono: "'JetBrains Mono', ui-monospace, monospace",
-    fontHref:
-      'https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@300;400;500&display=swap',
-    motion: 'hold',
-  },
-  v2: {
-    label: 'Didone — Bodoni Moda / Geist Mono',
-    serif: "'Bodoni Moda', Georgia, serif",
-    mono: "'Geist Mono', ui-monospace, monospace",
-    fontHref:
-      'https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..700&family=Geist+Mono:wght@300;400;500&display=swap',
-    motion: 'drift',
-  },
-  v3: {
-    label: 'Book serif — Spectral / DM Mono',
-    serif: "'Spectral', Georgia, serif",
-    mono: "'DM Mono', ui-monospace, monospace",
-    fontHref:
-      'https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&display=swap',
-    motion: 'breathe',
-  },
-};
-
-/** The image set for a given route (section key -> ImageMeta). */
-export function imagesFor(variant: Variant): Record<string, ImageMeta> {
-  return imagesByVariant[variant] ?? {};
-}
-
-/** Photographer credits present on a given route (attribution requirement). */
-export function credits(variant: Variant): { name: string; profile: string }[] {
-  const set = imagesFor(variant);
-  const seen = new Set<string>();
-  const out: { name: string; profile: string }[] = [];
-  for (const img of Object.values(set)) {
-    if (img?.credit && !seen.has(img.credit.name)) {
-      seen.add(img.credit.name);
-      out.push(img.credit);
-    }
-  }
-  return out;
-}
